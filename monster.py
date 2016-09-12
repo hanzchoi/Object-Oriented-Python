@@ -20,7 +20,13 @@ class Monster:
         self.color = random.choice(COLOR)
 
         for key, value in kwargs.items():
-            setattr(self, key,value)
+            setattr(self, key, value)
+
+    def __str__(self):
+        return '{} {}, HP: {}, XP: {}'.format(self.color.title(),
+                                              self.__class__.__name__,
+                                              self.hit_points,
+                                              self.experience)
 
     def battlecry(self):
         return self.sound.upper()
@@ -39,6 +45,7 @@ class Troll(Monster):
     min_experience = 2
     max_experience = 6
     sound = 'growl'
+
 
 class Dragon(Monster):
     min_hit_points = 5
